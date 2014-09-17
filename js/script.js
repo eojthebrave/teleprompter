@@ -5,6 +5,8 @@ var initPageSpeed = 35,
 
 $(function() {
 
+  var countdown;
+
 	// Check if we've been here before and made changes
 	if($.cookie('teleprompter_font_size'))
 	{
@@ -84,7 +86,7 @@ $(function() {
 	  // Optional. A value of false (default) limits selection to a single file, while
 	  // true enables multiple file selection.
 	  multiselect: false, // or true
-	  extensions: ['txt', 'text']
+	  extensions: ['.txt', '.text']
 	};
 	var dbChooser = Dropbox.createChooseButton(dbOptions);
 	$('.buttons').append(dbChooser);
@@ -101,13 +103,29 @@ $(function() {
 	$('.button.play').click(function(){
 		if($(this).hasClass('icon-play'))
 		{
-			start_teleprompter();
+      // Start the countdown timer.
+      countdown = $('.countdown').fadeIn().timer({
+        startVal: 10,
+        stopVal: 0,
+        autostart: true,
+        format: '{s}',
+        direction: 'ccw'
+      }, function() {
+        // Hide the countdown, and start the prompter.
+        countdown.destroyTimer();
+        $('.countdown').fadeOut();
+        start_teleprompter();
+      });
 		}
 		else
 		{
 			stop_teleprompter();
 		}
 	});
+  $('.countdown').click(function() {
+    countdown.destroyTimer();
+    $('.countdown').hide();
+  })
 	// Listen for FlipX Button Click
 	$('.button.flipx').click(function(){
 		if($('.teleprompter').hasClass('flipy'))
@@ -273,7 +291,7 @@ function start_teleprompter()
 	$('body').addClass('playing');
 	$('.button.play').removeClass('icon-play').addClass('icon-pause');
 	$('header h1, header nav').fadeTo('slow', 0.15);
-	$('.marker, .overlay').fadeIn('slow');
+	//$('.marker, .overlay').fadeIn('slow');
 
 	window.timer.resetTimer();
 	window.timer.startTimer();
@@ -288,7 +306,7 @@ function stop_teleprompter()
 	$('#teleprompter').attr('contenteditable', true);
 	$('header h1, header nav').fadeTo('slow', 1);
 	$('.button.play').removeClass('icon-pause').addClass('icon-play');
-	$('.marker, .overlay').fadeOut('slow');
+	//$('.marker, .overlay').fadeOut('slow');
 	$('body').removeClass('playing');
 
 	window.timer.stopTimer();

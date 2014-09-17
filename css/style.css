@@ -219,3 +219,17 @@ article .teleprompter.flipxy
 	overflow: hidden;
 	z-index: 10;
 }
+
+.countdown {
+  display: none;
+  position: absolute;
+  text-align: center;
+  font-size: 40em;
+  z-index: 20;
+  width: 100%;
+  height: 10000px;
+  color: #fff;
+  padding-top: 20px;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.75);
+}

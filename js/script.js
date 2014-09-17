@@ -62,6 +62,41 @@ $(function() {
 	fontSize(false);
 	speed(false);
 
+	// Add DropBox file chooser.
+	dbOptions = {
+	  // Success callback.
+	  success: function(files) {
+		// Retrieve the contents of the file.
+		$.get(files[0].link, function(data) {
+		  // Remove any existing text.
+		  clean_teleprompter();
+		  // Set the text to be whatever text was retrieved from the txt file in
+		  // DropBox.
+		  $('#teleprompter').html(cleanText(data));
+		  // Update the cookie that stores the text so when we do things like
+		  // refresh it's still there, and so we can edit it if need be.
+		  update_teleprompter()
+		})
+	  },
+
+	  linkType: "direct",
+
+	  // Optional. A value of false (default) limits selection to a single file, while
+	  // true enables multiple file selection.
+	  multiselect: false, // or true
+	  extensions: ['txt', 'text']
+	};
+	var dbChooser = Dropbox.createChooseButton(dbOptions);
+	$('.buttons').append(dbChooser);
+
+	/**
+	 * Convert newline text nodes into <p> tags in a string of text.
+	 */
+	function cleanText(string){
+	  string = string.trim();
+	  return (string.length>0?'<p>'+string.replace(/[\r\n]+/,'</p><p>')+'</p>':null);
+	}
+
 	// Listen for Play Button Click
 	$('.button.play').click(function(){
 		if($(this).hasClass('icon-play'))

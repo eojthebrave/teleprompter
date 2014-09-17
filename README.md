@@ -1,3 +1,11 @@
+The code here is a fork of the work started by @mrmidi, you can find the original version here: https://github.com/manifestinteractive/teleprompter
+
+This version has been updated to provide support for loading text files from a DropBox account. It adds a button to the navigation that allows you to authenticate with DropBox and choose a file. The content of that file is then loaded into the prompter.
+
+This version also introduces a 10 second countdown between the time you press the play button and the time the text starts scrolling in the prompter.
+
+See it in action and make use of it here: http://eojthebrave.github.io/teleprompter/
+
 ## Teleprompter ##
 
 You can edit the text right on the page. It'll even save your changes for you if you happen to leave the page.

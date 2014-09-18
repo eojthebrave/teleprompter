@@ -150,6 +150,8 @@ $(function() {
 	});
 	// Listen for Reset Button Click
 	$('.button.reset').click(function(){
+    $('.countdown').hide();
+    countdown.destroyTimer();
 		stop_teleprompter();
 		window.timer.resetTimer();
 		$('article').stop().animate({scrollTop: 0}, 100, 'linear', function(){ $('article').clearQueue(); });

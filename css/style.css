@@ -107,32 +107,55 @@ article .teleprompter p:last-child
 {
 	border-bottom: 1px solid #4297d7;
 }
+
+article .flipx
+{
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+}
+
+article .countdown.flipx {
+  padding-bottom: 1000px;
+}
+
 article .teleprompter.flipx
 {
-	-webkit-transform: rotateY(180deg);
-	-moz-transform: rotateY(180deg);
-	-o-transform: rotateY(180deg);
-	-ms-transform: rotateY(180deg);
 	z-index: 1;
 	pointer-events: none;
 	padding: 300px 50px 1000px 100px !important;
 }
+
+article .flipy
+{
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg);
+}
+
+article .countdown.flipy {
+  bottom: 0 !important;
+}
+
 article .teleprompter.flipy
 {
-	-webkit-transform: rotateX(180deg);
-	-moz-transform: rotateX(180deg);
-	-o-transform: rotateX(180deg);
-	-ms-transform: rotateX(180deg);
 	z-index: 1;
 	pointer-events: none;
 	padding: 1000px 50px 300px 100px !important;
 }
+
+article .flipxy
+{
+  -webkit-transform: rotateX(180deg) rotateY(180deg);
+  -moz-transform: rotateX(180deg) rotateY(180deg);
+  -o-transform: rotateX(180deg) rotateY(180deg);
+  -ms-transform: rotateX(180deg) rotateY(180deg);
+}
+
 article .teleprompter.flipxy
 {
-	-webkit-transform: rotateX(180deg) rotateY(180deg);
-	-moz-transform: rotateX(180deg) rotateY(180deg);
-	-o-transform: rotateX(180deg) rotateY(180deg);
-	-ms-transform: rotateX(180deg) rotateY(180deg);
 	z-index: 1;
 	pointer-events: none;
 	padding: 1000px 50px 300px 100px !important;
@@ -222,7 +245,7 @@ article .teleprompter.flipxy
 
 .countdown {
   display: none;
-  position: absolute;
+  position: fixed;
   text-align: center;
   font-size: 40em;
   z-index: 20;

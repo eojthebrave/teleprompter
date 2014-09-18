@@ -128,24 +128,24 @@ $(function() {
   })
 	// Listen for FlipX Button Click
 	$('.button.flipx').click(function(){
-		if($('.teleprompter').hasClass('flipy'))
+		if($('.teleprompter, .countdown').hasClass('flipy'))
 		{
-			$('.teleprompter').removeClass('flipy').toggleClass('flipxy');
+			$('.teleprompter, .countdown').removeClass('flipy').toggleClass('flipxy');
 		}
 		else
 		{
-			$('.teleprompter').toggleClass('flipx');
+			$('.teleprompter, .countdown').toggleClass('flipx');
 		}
 	});
 	// Listen for FlipY Button Click
 	$('.button.flipy').click(function(){
-		if($('.teleprompter').hasClass('flipx'))
+		if($('.teleprompter, .countdown').hasClass('flipx'))
 		{
-			$('.teleprompter').removeClass('flipx').toggleClass('flipxy');
+			$('.teleprompter, .countdown').removeClass('flipx').toggleClass('flipxy');
 		}
 		else
 		{
-			$('.teleprompter').toggleClass('flipy');
+			$('.teleprompter, .countdown').toggleClass('flipy');
 		}
 	});
 	// Listen for Reset Button Click
